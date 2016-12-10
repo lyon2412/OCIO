@@ -7,7 +7,7 @@ void main(){
 	
 srand (time(NULL));
 int m, n, *ptr, i, cont, k, j;
-char *ptc, *pal;
+char *ptc, pal[100];
 	printf("ingrese un tamaño: " );
 	scanf("%d", &n);
 	ptr = (int *) malloc(n*sizeof(int));
