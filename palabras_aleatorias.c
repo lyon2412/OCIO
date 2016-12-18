@@ -6,47 +6,54 @@
 void main(){
 	
 srand (time(NULL));
-int m, n, *ptr, i, cont, k, j;
-char *ptc, pal[100];
-	printf("ingrese un tamaño: " );
-	scanf("%d", &n);
-	ptr = (int *) malloc(n*sizeof(int));
-	for(i=0; i<n; i++)
-		*(ptr+i) = rand()%100 ;
-	for(i=0; i<n; i++)
-		printf("%d-",*(ptr+i) );
-	printf("\n");	
+int m, n, i, k, j;
+char *ptc, pal[100], op;	
 ////////////////////////////////////////////////////////////////////////////////////////
-	printf("ingrese un tamaño: " );
+	printf("ingrese el tamaño de su sopa de letras: " );
 	scanf("%d", &n);
 	ptc = (char *) malloc(n*sizeof(char));
 	for (i=0 ;i<n; i++){
-		m = rand()%2;
-		if (m==1){
+		m = rand()%9;
+		if (m<8){
 			*(ptc+i) = rand()%('z'-'a'+1) + 'a' ; 
 		}
-		else{
+		/*else if(m<8){
 			*(ptc+i) = rand()%('Z'-'A'+1) + 'A' ; 
+		}*/
+		else{
+			*(ptc+i) = ' ' ; 
 		}
 	}
 	for(i=0; i<n; i++)
 		printf("%c",*(ptc+i) );	
 	printf("\n");
-	getchar();
-printf("ingrese una palabra: ");
-gets(pal);	
-	i=0;
-	j=0;
-	while(i<n-strlen(pal)){
-		while(*(ptc+i+j)==*(pal+j) && j<strlen(pal)){
-			j++;
+	do {
+		getchar();
+		printf("ingrese una palabra: ");
+		gets(pal);	
+	
+		i=0;
+		j=0;
+		while(i<n-strlen(pal)){
+			while(*(ptc+i+j)==*(pal+j) && j<strlen(pal)){
+							j++;
+			}
+			if(j==strlen(pal)){
+				printf("\nla palabra esta presente en el arreglo aleatorio.\n");
+				break;		
+			}
+			i++;
+			j=0;
 		}
-		if(j==strlen(pal)){
-		printf("la palabra esta presente en el arreglo aleatorio.\n");
-		exit(1);		
-	    }
-	i++;
-	j=0;
-}
-	printf("la palabra NO esta presente en el arreglo aleatorio.\n");
+		if(j==0){
+			printf("\nla palabra NO esta presente en el arreglo aleatorio.\n");
+		}
+		printf("\ndesea ingresar otra palabra:s/n\n");
+		scanf("%c", &op);
+		 system ("clear"); 
+	}
+	
+	while(op='s');
+	free(ptc);
+	
 }
