@@ -25,6 +25,7 @@ void nota(int c[], int k);
 
 void setup() {                
   Serial.begin (9600);       //inicializa el puerto seria a 9600 baudios
+  pinMode(spk, OUTPUT);
   pinMode(Pecho1, INPUT);   
   pinMode(Ptrig1, OUTPUT);   
   pinMode(Pecho2, INPUT);    
