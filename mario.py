@@ -33,7 +33,7 @@ PI = math.pi # Valor de pi obtenido por libreria math
 
 done=False # Variable Bandera para salir del loop principal del programa
 
-
+ 
 while not done:
 	
 	pygame.draw.rect(screen,BLUE, [520,576,64,64],3)
