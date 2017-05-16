@@ -1,0 +1,21 @@
+#include<stdio.h>
+
+void main (){
+	int n, aux1, cont =0, aux2;
+
+	printf("ingrese el numero de caramelos: ");
+	scanf("%d", &n);
+
+	do {
+		aux1 = n/5;
+		cont = cont + (5*aux1);
+		aux2 = n - (5*aux1);
+		n = aux1 + aux2;
+	}
+	while (aux1 == 0);
+	cont = cont + n;
+
+	printf("el numero max de caramelos que podra comer el niño es %d\n", cont);
+
+}
+
