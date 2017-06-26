@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+void ordenar(int n, int *P);
+void imprimir(int n, int *P);
+
+void main (void){
+	
+	int flag=1, *P, cont=0, i=0, b;
+	P = (int*)malloc(2*sizeof(int)) ;
+
+	do{
+		cont=cont+1;
+		P = (int*)realloc(P,(cont)*sizeof(int));
+		printf("ingresar cantidad de pasajeros en el grupo %d:", cont);
+		scanf("%d",&b);
+		if(b==0)
+			flag=0;
+		else
+			P[cont-1]=b;
+			P = (int*)realloc(P,(cont)*sizeof(int));	
+	}
+	while(flag==1);	
+	imprimir(cont-1,P);
+	ordenar(cont-1,P);
+	imprimir(cont-1,P);
+	
+}
+
+
+
+void ordenar(int n, int *P){
+	int aux, i, j;
+	for(i=0;i<n;i++){
+		for(j=i;j<n;j++){
+			if(P[i]>P[j]){
+				aux=P[i];
+				P[i]=P[j];
+				P[j]=aux;
+			}
+		}
+	}
+}
+
+void imprimir(int n, int *P){
+	int i;
+		
+	for(i=0;i<n;i++)
+		printf("%d ", P[i]);
+	printf("\n");
+}
