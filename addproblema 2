@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+void ordenar(int n, int *P);
+void imprimir(int n, int *P);
+
+float promedio(int n, int *P);
+int moda(int n, int *P);
+
+void main (void){
+	
+	int flag=1, *P, cont=0, i=0, b;
+	P = (int*)malloc(2*sizeof(int)) ;
+
+	do{
+		cont=cont+1;
+		P = (int*)realloc(P,(cont)*sizeof(int));
+		printf("ingresar cantidad de pasajeros en el grupo %d:", cont);
+		scanf("%d",&b);
+		if(b==0)
+			flag=0;
+		else
+			P[cont-1]=b;
+			P = (int*)realloc(P,(cont)*sizeof(int));	
+	}
+	while(flag==1);	
+	imprimir(cont-1,P);
+	ordenar(cont-1,P);
+	imprimir(cont-1,P);
+
+	printf("%.1f\n",promedio(cont-1,P));
+	printf("%d\n",moda(cont-1,P));
+	
+	
+free(P);
+}
+
+
+
+void ordenar(int n, int *P){
+	int aux, i, j;
+	for(i=0;i<n;i++){
+		for(j=i;j<n;j++){
+			if(P[i]>P[j]){
+				aux=P[i];
+				P[i]=P[j];
+				P[j]=aux;
+			}
+		}
+	}
+}
+
+void imprimir(int n, int *P){
+	int i;
+		
+	for(i=0;i<n;i++)
+		printf("%d ", P[i]);
+	printf("\n");
+}
+
+int moda(int n, int *P){
+	int cont1=0, cont2=0, mod, i, j;
+
+	for(i=0;i<n;i++){
+		cont1=0;		
+		for(j=i;j<n;j++){
+			
+			if(P[i]==P[j])
+				cont1=cont1+1;
+			else
+				j=n;	
+		}
+		
+		if(cont1>cont2){
+			mod=P[i];
+			cont2=cont1;
+		}
+		
+	}
+	return mod;
+
+}
+
+float promedio(int n, int *P){
+	int i;
+	float sum=0;
+		for(i=0;i<n;i++)
+			sum=sum+P[i];
+		return sum/n;
+}
+
