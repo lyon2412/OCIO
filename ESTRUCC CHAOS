@@ -1,0 +1,21 @@
+
+#include<stdio.h>
+#include<string.h>
+void main(void){
+struct estudiante {
+char nombre[25];
+int edad, peso, altura;
+} est1 = { 3, "Carlos Rodríguez", 25};
+
+
+struct Estudiante est2 = {124, "José Vargas", 51}, est3;
+
+
+
+est3.codigo = 125;
+
+strcpy(est3.nombre, "María Mar");
+
+est3.edad = 23;
+printf("%s\n%s\n%s\n", est1.nombre, est2.nombre, est3.nombre);
+}
